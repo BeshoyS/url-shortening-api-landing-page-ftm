@@ -1,0 +1,52 @@
+@use "../util/" as u;
+.featurecard {
+  margin-block: u.pxtorem(85);
+  background-color: hsl(var(--neutral-white));
+  padding: u.pxtorem(32);
+  position: relative;
+  border-radius: u.pxtorem(5);
+  color: hsl(var(--neutral-grayviolet));
+  @include u.breakpoint-desktop(md) {
+    text-align: left;
+    $translate: u.pxtorem(32);
+    &:first-child {
+      transform: translateY(calc($translate * -1));
+    }
+    &:last-child {
+      transform: translateY(calc($translate));
+    }
+  }
+
+  &__iconwrapper {
+    background-color: hsl(var(--primary-darkviolet));
+    padding: u.pxtorem(25);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    @include u.breakpoint-desktop(md) {
+      left: 23%;
+    }
+  }
+
+  &__content {
+    margin-top: u.pxtorem(32);
+    padding-block: u.pxtorem(16);
+  }
+
+  &__title {
+    margin-bottom: u.pxtorem(16);
+    color: hsl(var(--primary-darkviolet));
+  }
+
+  &__desc {
+    @include u.breakpoint-desktop(md) {
+      font-size: u.pxtorem(13);
+    }
+  }
+}

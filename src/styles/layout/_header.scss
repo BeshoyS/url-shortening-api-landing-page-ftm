@@ -1,0 +1,13 @@
+@use "../util/" as u;
+
+.header {
+  width: min(90%, u.pxtoem(1000));
+  margin: 0 auto;
+  padding: u.pxtorem(24) 0 u.pxtorem(16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: u.pxtorem(32);
+  position: relative;
+  font-weight: 700;
+}

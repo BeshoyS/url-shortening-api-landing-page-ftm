@@ -1,0 +1,49 @@
+@use "../util/" as u;
+.statistics {
+  background-color: hsl(var(--neutral-lightgray));
+  text-align: center;
+
+  &__wrapper {
+    width: min(90%, u.pxtorem(1000));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    width: min(90%, u.pxtorem(455));
+    margin-inline: auto;
+    margin-bottom: u.pxtorem(40);
+  }
+
+  &__title {
+    color: hsl(var(--primary-darkviolet));
+    margin-bottom: u.pxtorem(20);
+  }
+  &__desc {
+    color: hsl(var(--neutral-grayviolet));
+  }
+
+  &__features {
+    padding-block: u.pxtorem(32);
+    position: relative;
+    z-index: 1;
+    @include u.breakpoint-desktop(md) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: u.pxtorem(32);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 15% 50%;
+      border-left: u.pxtorem(8) solid hsl(var(--primary-cyan));
+      transform: translateX(-50%);
+      z-index: -1;
+      @include u.breakpoint-desktop(md) {
+        inset: 5% 48%;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

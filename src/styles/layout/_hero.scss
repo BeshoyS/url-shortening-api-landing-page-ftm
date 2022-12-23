@@ -1,0 +1,43 @@
+@use "../util/" as u;
+.hero {
+  width: min(90%, u.pxtoem(1000));
+  margin: 0 auto;
+  padding-bottom: u.pxtorem(200);
+  @include u.breakpoint-desktop(md) {
+    padding-block: u.pxtorem(40) u.pxtorem(100);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: u.pxtorem(32);
+  }
+
+  &__img {
+    max-width: 160%;
+    margin-bottom: u.pxtorem(32);
+    transform: translateX(0.5%);
+    -webkit-transform: translateX(0.5%);
+    -moz-transform: translateX(0.5%);
+    -ms-transform: translateX(0.5%);
+    -o-transform: translateX(0.5%);
+  }
+
+  &__content {
+    text-align: center;
+    @include u.breakpoint-desktop(md) {
+      //   width: 90%;
+      text-align: left;
+    }
+  }
+  &__title {
+    color: hsl(var(--neutral-vdarkblue));
+  }
+  &__desc {
+    color: hsl(var(--neutral-grayviolet));
+    margin-block: u.pxtorem(24);
+    @include u.breakpoint-desktop(md) {
+      margin-block: u.pxtorem(4.8) u.pxtorem(32);
+      font-size: u.pxtorem(20);
+      font-weight: 500;
+    }
+  }
+}

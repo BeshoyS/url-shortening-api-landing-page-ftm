@@ -1,0 +1,39 @@
+@use "../util/" as u;
+.hamburger-nav {
+  font-size: u.pxtorem(32);
+  color: hsl(var(--neutral-grayviolet));
+  cursor: pointer;
+}
+
+.mobile-nav-list {
+  font-size: u.pxtorem(19.2);
+  position: absolute;
+  background-color: hsl(var(--primary-darkviolet));
+  color: hsl(var(--neutral-white));
+  inset: 100% 0 auto;
+  margin: 0 auto;
+  padding: u.pxtorem(16);
+  z-index: 9999;
+  border-radius: u.pxtorem(9.6);
+  -webkit-border-radius: u.pxtorem(9.6);
+  -moz-border-radius: u.pxtorem(9.6);
+  -ms-border-radius: u.pxtorem(9.6);
+  -o-border-radius: u.pxtorem(9.6);
+}
+
+.mobile-primary-nav,
+.mobile-secondary-nav {
+  text-align: center;
+}
+.mobile-primary-nav > li,
+.mobile-secondary-nav > li {
+  margin: u.pxtorem(32) 0;
+}
+
+.mobile-primary-nav {
+  border-bottom: u.pxtorem(1) solid hsla(var(--neutral-gray), 30%);
+}
+
+.nav-link {
+  color: inherit;
+}

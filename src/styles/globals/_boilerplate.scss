@@ -1,0 +1,45 @@
+@use "../util" as u;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-family: u.$font;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+
+.app {
+  overflow-x: hidden;
+}

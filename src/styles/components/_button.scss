@@ -1,0 +1,33 @@
+@use "../util/" as u;
+.btn {
+  padding: u.pxtorem(11) u.pxtorem(25);
+  font-size: inherit;
+  font-weight: 700;
+  color: hsl(var(--neutral-white));
+  background-color: hsl(var(--primary-cyan));
+  border: none;
+  border-radius: u.pxtorem(48);
+  -webkit-border-radius: u.pxtorem(48);
+  -moz-border-radius: u.pxtorem(48);
+  -ms-border-radius: u.pxtorem(48);
+  -o-border-radius: u.pxtorem(48);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  &:hover {
+    background-color: hsla(var(--primary-cyan), 80%);
+  }
+
+  &.w-100 {
+    width: 100%;
+  }
+  &.rounded-sm {
+    border-radius: u.pxtorem(5);
+    -webkit-border-radius: u.pxtorem(5);
+    -moz-border-radius: u.pxtorem(5);
+    -ms-border-radius: u.pxtorem(5);
+    -o-border-radius: u.pxtorem(5);
+  }
+}

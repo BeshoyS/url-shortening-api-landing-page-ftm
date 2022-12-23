@@ -1,0 +1,29 @@
+@use "../util/" as u;
+.desktop-nav {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: hsl(var(--neutral-grayviolet));
+}
+
+.desktop-primary-nav,
+.desktop-secondary-nav {
+  display: flex;
+  align-items: center;
+  gap: u.pxtorem(32);
+}
+
+.desktop-primary-nav > li,
+.desktop-secondary-nav > li {
+  transition: color 0.5s;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -ms-transition: color 0.5s;
+  -o-transition: color 0.5s;
+}
+
+.desktop-primary-nav > li:hover,
+.desktop-secondary-nav > li:hover {
+  color: hsl(var(--primary-darkviolet));
+}

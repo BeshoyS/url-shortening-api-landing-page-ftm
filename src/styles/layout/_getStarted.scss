@@ -1,0 +1,17 @@
+@use "../util/" as u;
+
+.getstarted {
+  padding: u.pxtorem(96) u.pxtorem(16);
+  color: hsl(var(--neutral-white));
+  text-align: center;
+  background: hsl(var(--primary-darkviolet))
+    url(../../../src/assets/images/bg-boost-mobile.svg) no-repeat top right;
+  @include u.breakpoint-desktop(md) {
+    padding-block: u.pxtorem(50);
+    background: hsl(var(--primary-darkviolet))
+      url(../../../src/assets/images/bg-boost-desktop.svg);
+  }
+  &__title {
+    margin-bottom: u.pxtorem(32);
+  }
+}
