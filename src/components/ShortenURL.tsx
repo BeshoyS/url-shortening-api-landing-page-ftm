@@ -13,7 +13,7 @@ const ShortenURL: FC = () => {
   const [originalLink, setOriginalLink] = useState<string | undefined>("");
   const [shortenList, setShortenList] = useState<shortenListTypes[]>([]);
   const [err, setErr] = useState<boolean>(false);
-  const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [copiedIdx, setCopiedIdx] = useState<string>("");
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,20 +26,21 @@ const ShortenURL: FC = () => {
     }
   }
 
-  async function copyLink(e: SyntheticEvent, code: string, shortLink: string) {
-    if (e.currentTarget.id.includes(code)) {
-      await navigator.clipboard
-        .writeText(shortLink)
-        .then(() => {
-          setIsCopied(true);
-        })
-        .then(() => {
-          setTimeout(() => {
-            setIsCopied(false);
-          }, 2000);
-        });
-    }
+  async function copyLink(code: string, shortLink: string, idx: number) {
+    await navigator.clipboard.writeText(shortLink).then(() => {
+      setCopiedIdx(`${code + idx}`);
+    });
   }
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setCopiedIdx("");
+    }, 2000);
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, [copiedIdx]);
 
   useEffect(() => {
     if (originalLink) {
@@ -98,11 +99,11 @@ const ShortenURL: FC = () => {
                 </a>
                 <Button
                   unique={code + idx}
-                  title={isCopied ? "Copied!" : "Copy"}
+                  title={copiedIdx === `${code + idx}` ? "Copied!" : "Copy"}
                   styles={`rounded-sm w-100 shorten__copybtn ${
-                    isCopied ? "copied" : ""
+                    copiedIdx === `${code + idx}` ? "copied" : ""
                   }`}
-                  onClick={(e) => copyLink(e, code, shortLink)}
+                  onClick={() => copyLink(code, shortLink, idx)}
                 />
               </div>
             </div>
