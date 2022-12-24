@@ -13,7 +13,7 @@ const ShortenURL: FC = () => {
   const [originalLink, setOriginalLink] = useState<string | undefined>("");
   const [shortenList, setShortenList] = useState<shortenListTypes[]>([]);
   const [err, setErr] = useState<boolean>(false);
-  const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [copiedList, setCopiedList] = useState<string[]>([]);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,18 +26,13 @@ const ShortenURL: FC = () => {
     }
   }
 
-  async function copyLink(e: SyntheticEvent, code: string, shortLink: string) {
+  async function copyLink(e: SyntheticEvent, code: string, shortLink: string, idx:number) {
     if (e.currentTarget.id.includes(code)) {
       await navigator.clipboard
         .writeText(shortLink)
         .then(() => {
-          setIsCopied(true);
+          setCopiedList( [code + idx.toString()] )
         })
-        .then(() => {
-          setTimeout(() => {
-            setIsCopied(false);
-          }, 2000);
-        });
     }
   }
 
@@ -98,11 +93,11 @@ const ShortenURL: FC = () => {
                 </a>
                 <Button
                   unique={code + idx}
-                  title={isCopied ? "Copied!" : "Copy"}
+                  title={copiedList.includes(code + idx.toString()) ? "Copied!" : "Copy"}
                   styles={`rounded-sm w-100 shorten__copybtn ${
-                    isCopied ? "copied" : ""
+                    copiedList.includes(code + idx.toString()) ? "copied" : ""
                   }`}
-                  onClick={(e) => copyLink(e, code, shortLink)}
+                  onClick={(e) => copyLink(e, code, shortLink, idx)}
                 />
               </div>
             </div>
