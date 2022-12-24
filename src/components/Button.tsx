@@ -1,14 +1,21 @@
-import { FC } from "react";
+import { FC, SyntheticEvent } from "react";
 
 type ButtonProps = {
   title: string;
-  onClick?: () => void;
+  onClick?: (e: SyntheticEvent) => void;
   styles?: string | "";
+  type?: string;
+  unique?: string | "";
 };
 
-const Button: FC<ButtonProps> = ({ title, onClick, styles }) => {
+const Button: FC<ButtonProps> = ({ unique, title, onClick, styles, type }) => {
   return (
-    <button className={`btn ${styles}`} onClick={onClick}>
+    <button
+      id={unique}
+      type={type == "submit" ? "submit" : "button"}
+      className={`btn ${styles}`}
+      onClick={onClick}
+    >
       {title}
     </button>
   );

@@ -52,18 +52,21 @@
     &::placeholder {
       color: hsl(var(--neutral-gray));
     }
+
+    &.error {
+      border: u.pxtorem(2) solid hsl(var(--secondary-red));
+    }
   }
 
   &__btn {
     @include u.breakpoint-desktop(md) {
-      width: 20% !important;
+      width: 30% !important;
     }
   }
   .err-msg {
     color: hsl(var(--secondary-red));
     font-size: u.pxtorem(13);
     font-style: italic;
-    display: none;
     @include u.breakpoint-desktop(md) {
       position: absolute;
       top: 108%;
@@ -128,7 +131,7 @@
   &__copybtn {
     @include u.breakpoint-desktop(md) {
       padding-inline: u.pxtorem(10) !important;
-      width: 20% !important;
+      width: 25% !important;
     }
   }
 }

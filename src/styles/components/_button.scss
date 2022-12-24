@@ -30,4 +30,8 @@
     -ms-border-radius: u.pxtorem(5);
     -o-border-radius: u.pxtorem(5);
   }
+
+  &.copied {
+    background-color: hsl(var(--primary-darkviolet));
+  }
 }
